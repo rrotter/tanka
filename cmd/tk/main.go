@@ -67,7 +67,7 @@ func main() {
 func addCommandsWithLogLevelOption(rootCmd *cli.Command, cmds ...*cli.Command) {
 	for _, cmd := range cmds {
 		levels := []string{zerolog.Disabled.String(), zerolog.FatalLevel.String(), zerolog.ErrorLevel.String(), zerolog.WarnLevel.String(), zerolog.InfoLevel.String(), zerolog.DebugLevel.String(), zerolog.TraceLevel.String()}
-		cmd.Flags().String("log-level", zerolog.InfoLevel.String(), "possible values: "+strings.Join(levels, ", "))
+		cmd.Flags().String("log-level", zerolog.WarnLevel.String(), "possible values: "+strings.Join(levels, ", "))
 
 		cmdRun := cmd.Run
 		cmd.Run = func(cmd *cli.Command, args []string) error {
